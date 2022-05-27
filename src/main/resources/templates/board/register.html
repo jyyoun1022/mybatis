@@ -12,15 +12,17 @@
         <div class="container">
             <h2>게시글 등록</h2>
             <form  id="form"  name="form" method="post" th:action="@{/board/register}">
+
+
                 <table class="board_detail">
                     <tr>
-                        <td>제목</td>
-                    <td><input type="text" id="title" name="title"></td>
+                        <label><b>Title</b></label>
+                    <td><input type="text" id="title" name="title" placeholder="Enter Title" autofocus></td>
                     </tr>
                     <tr>
-                            <td>내용</td>
                         <td >
-                            <textarea id="content" name="content"></textarea>
+                            <label><b>Content</b></label>
+                            <textarea id="content" name="content" placeholder="Enter Content"></textarea>
                         </td>
                     </tr>
                 </table>
@@ -29,3 +31,4 @@
         </div>
 </body>
 </html>
+

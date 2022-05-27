@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -32,6 +33,21 @@ public class BoardController {
     @PostMapping("/register")
     public String register(BoardDTO dto) throws Exception{
         boardService.insertBoard(dto);
+        return "redirect:/board/list";
+    }
+    @GetMapping("/read")
+    public void read(Model model, @RequestParam("bno") int bno)throws Exception{
+        BoardDTO board = boardService.selectBoardDetail(bno);
+        model.addAttribute("board",board);
+    }
+    @PostMapping("/modify")
+    public String modify(BoardDTO dto)throws Exception{
+        boardService.updateBoard(dto);
+        return "redirect:/board/list";
+    }
+    @PostMapping("/delete")
+    public String delete(int bno)throws Exception{
+        boardService.deleteBoard(bno);
         return "redirect:/board/list";
     }
 }

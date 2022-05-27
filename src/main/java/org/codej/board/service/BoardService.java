@@ -10,5 +10,11 @@ public interface BoardService {
 
     void insertBoard(BoardDTO dto)throws Exception;
 
+    BoardDTO selectBoardDetail(int bno) throws Exception;
+
+    void updateBoard(BoardDTO dto)throws Exception;
+
+    void deleteBoard(int bno)throws Exception;
+
 
 }

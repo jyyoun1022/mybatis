@@ -34,4 +34,58 @@
                        )
 ]]>
     </insert>
+
+    <update id="updateViewCount" parameterType="int">
+        <![CDATA[
+                update
+                    t_board
+                set
+                    view_count = view_count + 1
+                where
+                    bno = #{bno}
+
+            ]]>
+    </update>
+
+    <select id="selectBoardDetail" parameterType="int" resultType="org.codej.board.dto.BoardDTO">
+        <![CDATA[
+                select
+                    bno,title,content,view_count,
+                    regdate,
+                    writer_id
+                from
+                    t_board
+                where
+                    bno = #{bno} and deleted_yn = 'N'
+            ]]>
+    </select>
+
+    <update id="updateBoard" parameterType="org.codej.board.dto.BoardDTO">
+        <![CDATA[
+                update
+                    t_board
+                set
+                    title = #{title},
+                    content = #{content},
+                    moddate = now(),
+                    updator_id = 'admin'
+                where
+                    bno = #{bno}
+
+]]>
+    </update>
+
+
+    <update id="deleteBoard" parameterType="int">
+        <![CDATA[
+                update
+                    t_board
+                set
+                    deleted_yn ='Y',
+                    moddate = now(),
+                    updator_id = 'admin'
+                where
+                    bno = #{bno}
+]]>
+    </update>
 </mapper>
