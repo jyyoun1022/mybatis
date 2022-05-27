@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+        <div class="container">
+            <h2>게시글 등록</h2>
+            <form  id="form"  name="form" method="post" th:action="@{/board/register}">
+                <table class="board_detail">
+                    <tr>
+                        <td>제목</td>
+                    <td><input type="text" id="title" name="title"></td>
+                    </tr>
+                    <tr>
+                            <td>내용</td>
+                        <td >
+                            <textarea id="content" name="content"></textarea>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" id="submit" value="save" class="btn">
+            </form>
+        </div>
+</body>
+</html>

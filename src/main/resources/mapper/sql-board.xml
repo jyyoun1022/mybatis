@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.codej.board.mapper.BoardMapper">
+    <select id="selectBoardList" resultType="org.codej.board.dto.BoardDTO">
+        <![CDATA[
+        select
+            bno,
+            title,
+            view_count,
+            regdate
+        from
+            t_board
+        where
+            deleted_yn = 'N'
+        order by
+            bno desc
+        ]]>
+    </select>
+
+    <insert id="insertBoard" parameterType="org.codej.board.dto.BoardDTO">
+        <![CDATA[
+            insert into t_board(
+                                title,
+                                content,
+                                regdate,
+                                writer_id
+            )
+                values (
+                        #{title},
+                        #{content},
+                        now(),
+                        'admin'
+                       )
+]]>
+    </insert>
+</mapper>
